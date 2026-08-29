@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Commande confirmée — La Maison d'Art</title>
+    <link rel="stylesheet" href="{% static 'produits/style.css' %}">
+</head>
+<body>
+    {% include 'produits/header.html' %}
+
+    <div class="confirmation-commande">
+        <h2>Merci pour votre commande, {{ commande.nom }} !</h2>
+        <p>Votre commande n°{{ commande.id }} a bien été enregistrée.</p>
+        <p>Total à régler : <strong>{{ commande.total }} DZD</strong></p>
+
+        <div class="infos-paiement">
+            <h3>Paiement à la livraison</h3>
+            <p>Le règlement s'effectue en espèces directement auprès du livreur, à la réception de votre colis.</p>
+            <p>Nous vous contacterons prochainement pour confirmer votre commande et organiser la livraison.</p>
+        </div>
+
+        <a href="{% url 'accueil' %}" class="retour">← Retour à la galerie</a>
+    </div>
+</body>
+</html>

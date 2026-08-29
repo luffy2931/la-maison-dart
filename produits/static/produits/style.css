@@ -1,0 +1,235 @@
+body {
+    font-family: 'Georgia', serif;
+    background-image: url('images/fond.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+    color: #2b2b2b;
+}
+
+.site-header {
+    background-color: #1a1a1a;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.header-titre h1 {
+    color: #f5f0e6;
+    margin: 0;
+    font-size: 1.8em;
+    font-weight: normal;
+    letter-spacing: 1px;
+}
+
+.header-titre h1 a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.header-titre p {
+    color: #b8a98a;
+    margin: 5px 0 0;
+    font-style: italic;
+    font-size: 0.9em;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.lien-nav {
+    color: #f5f0e6;
+    text-decoration: none;
+    font-size: 1em;
+}
+
+.lien-nav:hover {
+    text-decoration: underline;
+}
+
+.lien-panier {
+    color: #f5f0e6;
+    text-decoration: none;
+    font-size: 1em;
+}
+
+.lien-panier:hover {
+    text-decoration: underline;
+}
+
+
+.conteneur-produits {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 50px 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.carte-produit {
+    background-color: white;
+    width: 280px;
+    padding: 0;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+    overflow: hidden;
+}
+
+.carte-produit:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.carte-produit img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    display: block;
+}
+
+.carte-produit h2 {
+    font-size: 1.2em;
+    margin: 15px 10px 5px;
+    font-weight: normal;
+}
+
+.carte-produit p {
+    font-size: 0.9em;
+    color: #666;
+    margin: 0 15px;
+}
+
+.prix {
+    color: #1a1a1a;
+    font-weight: bold;
+    font-size: 1.3em;
+    margin: 15px 0 20px;
+    display: block;
+}
+.carte-produit {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.detail-produit {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 0 30px;
+}
+
+.detail-produit img {
+    max-width: 450px;
+    width: 100%;
+    height: auto;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+.infos-produit {
+    flex: 1;
+    min-width: 250px;
+}
+
+.infos-produit h2 {
+    font-size: 1.8em;
+    font-weight: normal;
+    margin-bottom: 15px;
+}
+
+.infos-produit .prix {
+    font-size: 1.5em;
+    display: block;
+    margin: 20px 0;
+}
+
+.stock {
+    color: #777;
+    margin-bottom: 30px;
+}
+
+.retour {
+    color: #1a1a1a;
+    text-decoration: none;
+    border-bottom: 1px solid #1a1a1a;
+    padding-bottom: 2px;
+}
+.lien-panier {
+    display: inline-block;
+    margin-top: 10px;
+    color: #f5f0e6;
+    text-decoration: none;
+    font-size: 1em;
+}
+
+.lien-panier:hover {
+    text-decoration: underline;
+}
+.bouton-panier {
+    display: inline-block;
+    background-color: #1a1a1a;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    margin: 15px 0;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.bouton-panier:hover {
+    background-color: #444;
+}
+.page-a-propos {
+    max-width: 700px;
+    margin: 50px auto;
+    padding: 0 30px;
+    line-height: 1.8;
+}
+
+.page-a-propos h2 {
+    font-weight: normal;
+    margin-bottom: 20px;
+}
+.lien-nav {
+    color: #f5f0e6;
+    text-decoration: none;
+    margin-right: 15px;
+}
+
+.lien-nav:hover {
+    text-decoration: underline;
+}
+.bouton-vendu {
+    display: inline-block;
+    background-color: #999;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-style: italic;
+}
+
+.badge-vendu {
+    display: block;
+    background-color: #1a1a1a;
+    color: white;
+    padding: 5px 10px;
+    font-size: 0.85em;
+    margin-top: 10px;
+}
+.conteneur-produits, .detail-produit, .page-a-propos, .panier, .formulaire-commande, .confirmation-commande {
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 8px;
+}

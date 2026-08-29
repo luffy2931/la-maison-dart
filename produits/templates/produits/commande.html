@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Finaliser ma commande — La Maison d'Art</title>
+    <link rel="stylesheet" href="{% static 'produits/style.css' %}">
+</head>
+<body>
+    {% include 'produits/header.html' %}
+
+    <div class="formulaire-commande">
+        <h2>Vos informations</h2>
+
+        <div class="recap-commande">
+            {% for item in panier %}
+                <p>{{ item.produit.nom }} x {{ item.quantite }} — {{ item.prix_total }} €</p>
+            {% endfor %}
+            <p class="total-panier">Total : {{ panier.total }} €</p>
+        </div>
+
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="bouton-panier">Valider ma commande</button>
+        </form>
+
+        <a href="{% url 'voir_panier' %}" class="retour">← Retour au panier</a>
+    </div>
+</body>
+</html>

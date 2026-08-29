@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Mon Panier — La Maison d'Art</title>
+    <link rel="stylesheet" href="{% static 'produits/style.css' %}">
+</head>
+<body>
+    {% include 'produits/header.html' %}
+
+    <div class="panier">
+        <h2>Mon Panier</h2>
+        {% for item in panier %}
+            <div class="ligne-panier">
+                <p>{{ item.produit.nom }} — {{ item.quantite }} x {{ item.produit.prix }} € = {{ item.prix_total }} €</p>
+                <a href="{% url 'supprimer_du_panier' item.produit.id %}">Retirer</a>
+            </div>
+        {% empty %}
+            <p>Votre panier est vide.</p>
+        {% endfor %}
+
+        {% if panier %}
+            <p class="total-panier">Total : {{ panier.total }} €</p>
+        {% endif %}
+
+        {% if panier %}
+    <a href="{% url 'passer_commande' %}" class="bouton-panier">Passer la commande</a>
+{% endif %}
+
+        <a href="{% url 'accueil' %}" class="retour">← Continuer mes achats</a>
+    </div>
+</body>
+</html>

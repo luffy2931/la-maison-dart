@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ produit.nom }} — La Maison d'Art</title>
+    <link rel="stylesheet" href="{% static 'produits/style.css' %}">
+</head>
+<body>
+    {% include 'produits/header.html' %}
+
+    <div class="detail-produit">
+        {% if produit.image %}
+            <img src="{{ produit.image.url }}" alt="{{ produit.nom }}">
+        {% endif %}
+        <div class="infos-produit">
+            <h2>{{ produit.nom }}</h2>
+            <p>{{ produit.description }}</p>
+            <span class="prix">{{ produit.prix }} DZD</span>
+            <p class="stock">
+                {% if produit.stock > 0 %}
+                    En stock ({{ produit.stock }} disponible{{ produit.stock|pluralize }})
+                {% else %}
+                    Rupture de stock
+                {% endif %}
+            </p>
+            {% if produit.stock > 0 %}
+    <a href="{% url 'ajouter_au_panier' produit.id %}" class="bouton-panier">Ajouter au panier</a>
+{% else %}
+    <span class="bouton-vendu">Vendu</span>
+{% endif %}
+            <br><br>
+            <a href="{% url 'accueil' %}" class="retour">← Retour à la galerie</a>
+        </div>
+    </div>
+</body>
+</html>

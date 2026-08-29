@@ -1,0 +1,11 @@
+<header class="site-header">
+    <div class="header-titre">
+        <h1><a href="{% url 'accueil' %}">La Maison d'Art</a></h1>
+        <p>Galerie de tableaux d'art originaux</p>
+    </div>
+    <nav class="navbar">
+        <a href="{% url 'accueil' %}" class="lien-nav">Accueil</a>
+        <a href="{% url 'a_propos' %}" class="lien-nav">À propos</a>
+        <a href="{% url 'voir_panier' %}" class="lien-panier">🛒 Panier ({{ panier|length }})</a>
+    </nav>
+</header>

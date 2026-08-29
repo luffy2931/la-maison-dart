@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>À propos — La Maison d'Art</title>
+    <link rel="stylesheet" href="{% static 'produits/style.css' %}">
+</head>
+<body>
+   {% include 'produits/header.html' %}
+    <div class="page-a-propos">
+        <h2>À propos de l'artiste</h2>
+        <p>Bienvenue dans mon univers artistique.</p>
+        <p>Passionné(e) de peinture depuis plusieurs années, je crée des œuvres qui explorent la couleur, la lumière et l'émotion. Chaque tableau naît d'une recherche personnelle, entre technique et instinct, et raconte une histoire différente.</p>
+        <p>Je travaille principalement [tes techniques] sur toile, en m'inspirant [de ce qui t'inspire].</p>
+        <p>Chaque œuvre présentée sur ce site est originale et peinte à la main. Une fois vendue, elle ne sera jamais reproduite à l'identique — vous acquérez donc une pièce unique.</p>
+        <p>Je crois que l'art doit être accessible et vivant : c'est pourquoi j'ai créé cette galerie en ligne, pour partager mon travail au-delà des expositions physiques et le faire découvrir à un public plus large.</p>
+        <p>Merci de votre visite, et n'hésitez pas à me contacter pour toute question sur une œuvre en particulier.</p>
+        <a href="{% url 'accueil' %}" class="retour">← Retour à la galerie</a>
+    </div>
+</body>
+</html>
