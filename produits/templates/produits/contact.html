@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Nous contacter — La Maison d'Art</title>
+    <link rel="stylesheet" href="{% static 'produits/style.css' %}">
+</head>
+<body>
+    {% include 'produits/header.html' %}
+
+    <div class="page-contact">
+        <h2>Nous contacter</h2>
+        <p>Suivez-nous ou contactez-nous directement via l'un de ces canaux :</p>
+
+        <div class="liens-reseaux">
+            <a href="https://instagram.com/_maison.dart_" target="_blank" class="lien-reseau">
+                📷 Instagram
+            </a>
+            <a href="https://facebook.com/eclat_de_toile" target="_blank" class="lien-reseau">
+                📘 Facebook
+            </a>
+            <a href="https://wa.me/213555475078" target="_blank" class="lien-reseau">
+                💬 WhatsApp
+            </a>
+        </div>
+
+        <a href="{% url 'accueil' %}" class="retour">← Retour à la galerie</a>
+    </div>
+</body>
+</html>

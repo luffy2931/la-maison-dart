@@ -69,3 +69,7 @@ def passer_commande(request):
 
 def a_propos(request):
     return render(request, 'produits/a_propos.html')
+
+
+def contact(request):
+    return render(request, 'produits/contact.html')
