@@ -259,3 +259,55 @@ body {
 .lien-reseau:hover {
     background-color: #444;
 }
+
+.image-zoomable {
+    cursor: zoom-in;
+}
+
+.indication-zoom {
+    font-size: 0.85em;
+    color: #999;
+    font-style: italic;
+    margin-top: 8px;
+}
+
+.visionneuse-zoom {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.92);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.visionneuse-zoom img {
+    max-width: 90%;
+    max-height: 90%;
+    cursor: grab;
+    transition: transform 0.05s ease-out;
+    user-select: none;
+}
+
+.visionneuse-zoom img:active {
+    cursor: grabbing;
+}
+
+.fermer-zoom {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 2.5em;
+    cursor: pointer;
+    z-index: 1001;
+    line-height: 1;
+}
+
+.fermer-zoom:hover {
+    color: #ccc;
+}

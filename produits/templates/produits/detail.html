@@ -11,8 +11,9 @@
 
     <div class="detail-produit">
         {% if produit.image %}
-            <img src="{{ produit.image.url }}" alt="{{ produit.nom }}">
-        {% endif %}
+    <img src="{{ produit.image.url }}" alt="{{ produit.nom }}" class="image-zoomable" onclick="ouvrirZoom('{{ produit.image.url }}')">
+    <p class="indication-zoom">🔍 Cliquez sur l'image pour zoomer</p>
+{% endif %}
         <div class="infos-produit">
             <h2>{{ produit.nom }}</h2>
             <p>{{ produit.description }}</p>
@@ -33,5 +34,104 @@
             <a href="{% url 'accueil' %}" class="retour">← Retour à la galerie</a>
         </div>
     </div>
+    <div id="visionneuse-zoom" class="visionneuse-zoom" onclick="if(event.target === this) fermerZoom()">
+    <span class="fermer-zoom" onclick="fermerZoom()">&times;</span>
+    <img id="image-zoom" src="" alt="Zoom">
+</div>
+
+<script>
+let zoomActuel = 1;
+let positionX = 0, positionY = 0;
+let enTrainDeGlisser = false;
+let departX, departY;
+
+function ouvrirZoom(url) {
+    const visionneuse = document.getElementById('visionneuse-zoom');
+    const image = document.getElementById('image-zoom');
+    image.src = url;
+    zoomActuel = 1;
+    positionX = 0;
+    positionY = 0;
+    appliquerTransformation();
+    visionneuse.style.display = 'flex';
+}
+
+function fermerZoom() {
+    document.getElementById('visionneuse-zoom').style.display = 'none';
+}
+
+function appliquerTransformation() {
+    const image = document.getElementById('image-zoom');
+    image.style.transform = `translate(${positionX}px, ${positionY}px) scale(${zoomActuel})`;
+}
+
+document.addEventListener('wheel', function(e) {
+    const visionneuse = document.getElementById('visionneuse-zoom');
+    if (visionneuse.style.display === 'flex') {
+        e.preventDefault();
+        const delta = e.deltaY > 0 ? -0.1 : 0.1;
+        zoomActuel = Math.min(Math.max(1, zoomActuel + delta), 5);
+        appliquerTransformation();
+    }
+}, { passive: false });
+
+document.getElementById('image-zoom')?.addEventListener('mousedown', function(e) {
+    if (zoomActuel > 1) {
+        enTrainDeGlisser = true;
+        departX = e.clientX - positionX;
+        departY = e.clientY - positionY;
+    }
+});
+
+document.addEventListener('mousemove', function(e) {
+    if (enTrainDeGlisser) {
+        positionX = e.clientX - departX;
+        positionY = e.clientY - departY;
+        appliquerTransformation();
+    }
+});
+
+document.addEventListener('mouseup', function() {
+    enTrainDeGlisser = false;
+});
+
+// Support tactile (mobile/tablette)
+let distanceInitiale = 0;
+
+document.getElementById('image-zoom')?.addEventListener('touchstart', function(e) {
+    if (e.touches.length === 2) {
+        distanceInitiale = Math.hypot(
+            e.touches[0].clientX - e.touches[1].clientX,
+            e.touches[0].clientY - e.touches[1].clientY
+        );
+    } else if (e.touches.length === 1 && zoomActuel > 1) {
+        enTrainDeGlisser = true;
+        departX = e.touches[0].clientX - positionX;
+        departY = e.touches[0].clientY - positionY;
+    }
+});
+
+document.addEventListener('touchmove', function(e) {
+    if (e.touches.length === 2) {
+        e.preventDefault();
+        const distanceActuelle = Math.hypot(
+            e.touches[0].clientX - e.touches[1].clientX,
+            e.touches[0].clientY - e.touches[1].clientY
+        );
+        const delta = (distanceActuelle - distanceInitiale) * 0.01;
+        zoomActuel = Math.min(Math.max(1, zoomActuel + delta), 5);
+        distanceInitiale = distanceActuelle;
+        appliquerTransformation();
+    } else if (e.touches.length === 1 && enTrainDeGlisser) {
+        positionX = e.touches[0].clientX - departX;
+        positionY = e.touches[0].clientY - departY;
+        appliquerTransformation();
+    }
+}, { passive: false });
+
+document.addEventListener('touchend', function() {
+    enTrainDeGlisser = false;
+});
+</script>
 </body>
 </html>
